@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  via: MyString
+  attempts: 1
+  remaining_attempts: 1
+  wait_between_request: 1
+  facebook_page_id: 1
+
+two:
+  via: MyString
+  attempts: 1
+  remaining_attempts: 1
+  wait_between_request: 1
+  facebook_page_id: 1

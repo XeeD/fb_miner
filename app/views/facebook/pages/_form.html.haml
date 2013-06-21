@@ -1,0 +1,9 @@
+= simple_form_for(@facebook_page) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :name
+    = f.input :url
+
+  .form-actions
+    = f.button :submit, class: "btn btn-primary btn-large"

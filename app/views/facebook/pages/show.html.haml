@@ -1,0 +1,26 @@
+%h1= @facebook_page.name
+
+%p
+  %b Page name:
+  = @facebook_page.name
+
+%p
+  %b Facebook ID:
+  = @facebook_page.fb_id
+
+%p
+  %b URL on Facebook:
+  = @facebook_page.url
+
+= simple_form_for(scheduled_page_like_check) do |f|
+  %fieldset
+    %legend Scrapping scheduler
+    = f.input :facebook_page_id, as: :hidden
+    = f.input :via, as: :hidden
+    = f.input :attempts
+    = f.input :wait_between_requests
+    = f.button :submit, "Schedule Like scrapping", class: "btn btn-warning"
+
+= link_to 'Edit', edit_facebook_page_path(@facebook_page)
+\|
+= link_to 'Back', facebook_pages_path

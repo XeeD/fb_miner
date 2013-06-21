@@ -1,0 +1,2 @@
+module Scheduled::PageLikeChecksHelper
+end
