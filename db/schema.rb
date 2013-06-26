@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130626091743) do
+ActiveRecord::Schema.define(version: 20130626112017) do
 
   create_table "facebook_page_likes", force: true do |t|
     t.integer  "page_id"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20130626091743) do
     t.integer  "facebook_page_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "last_performed_at"
   end
 
   add_index "scheduled_page_like_checks", ["facebook_page_id"], name: "index_scheduled_page_like_checks_on_facebook_page_id"

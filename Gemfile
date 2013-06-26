@@ -33,6 +33,8 @@ gem 'foreman'
 # Jobs & timing
 gem 'sidekiq'
 gem 'clockwork'
+gem 'slim', '>= 1.1.0'
+gem 'sinatra', '>= 1.3.0', require: nil
 
 # Development specific gems
 group :development, :test do

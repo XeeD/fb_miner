@@ -1,3 +1,7 @@
 Sidekiq.configure_server do |config|
-  config.redis = { namespace: 'fb_miner' }
+  config.redis = { url: 'redis://localhost:6379/1', namespace: 'fb_miner' }
+end
+
+Sidekiq.configure_client do |config|
+  config.redis = { url: 'redis://localhost:6379/1', namespace: 'fb_miner' }
 end

@@ -1,16 +1,44 @@
 %h1= @facebook_page.name
+= link_to_back "Back to pages list", path: facebook_pages_path
 
-%p
-  %b Page name:
-  = @facebook_page.name
+.well
+  %p
+    %b Page name:
+    = @facebook_page.name
 
-%p
-  %b Facebook ID:
-  = @facebook_page.fb_id
+  %p
+    %b Facebook ID:
+    = @facebook_page.fb_id
 
-%p
-  %b URL on Facebook:
-  = @facebook_page.url
+  %p
+    %b URL on Facebook:
+    = @facebook_page.url
+
+- unless @facebook_page.scheduled_page_like_checks.empty?
+  %h2 Scheduled Page likes scanning
+
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Remaining attempts
+        %th Wait between requests
+        %th Created at
+        %th Last performed
+        %th
+
+    %tbody
+      - for scheduled_check in @facebook_page.scheduled_page_like_checks
+        %tr
+          %td
+            #{scheduled_check.remaining_attempts}/#{scheduled_check.attempts}
+          %td= scheduled_check.wait_between_requests
+          %td= l scheduled_check.created_at, format: :short
+          %td
+            - if scheduled_check.last_performed_at.present?
+              = l scheduled_check.last_performed_at, format: :short
+            - else
+              %em.text-error not performed yet
+          %td= link_to_destroy scheduled_check
 
 = simple_form_for(scheduled_page_like_check) do |f|
   %fieldset
@@ -21,6 +49,4 @@
     = f.input :wait_between_requests
     = f.button :submit, "Schedule Like scrapping", class: "btn btn-warning"
 
-= link_to 'Edit', edit_facebook_page_path(@facebook_page)
-\|
-= link_to 'Back', facebook_pages_path
+= link_to_edit_with_title @facebook_page

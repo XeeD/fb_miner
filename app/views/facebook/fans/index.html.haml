@@ -1,0 +1,18 @@
+%h1 Fans of #{facebook_page.name}
+
+= link_to_back facebook_page
+
+%p
+  People who like this page
+
+%table.table.table-striped.table-condensed
+  %thead
+    %tr
+      %th Name
+      %th Facebook ID
+
+  %tbody
+    - for profile in @fans
+      %tr
+        %th= link_to profile.name, profile.url
+        %th= profile.fb_id

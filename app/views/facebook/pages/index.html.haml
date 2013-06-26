@@ -1,23 +1,24 @@
-%h1 Listing facebook_pages
+%h1 Facebook pages
 
-%table
+%p
+  = link_to_add 'New Page', new_facebook_page_path
+
+%table.table.table-striped
   %tr
-    %th Fb
     %th Name
-    %th Url
-    %th
-    %th
+    %th Facebook ID
+    %th URL
+    %th Fans
     %th
 
   - @facebook_pages.each do |facebook_page|
     %tr
-      %td= facebook_page.fb_id
       %td= facebook_page.name
-      %td= facebook_page.url
-      %td= link_to 'Show', facebook_page
-      %td= link_to 'Edit', edit_facebook_page_path(facebook_page)
-      %td= link_to 'Destroy', facebook_page, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= facebook_page.fb_id
+      %td= link_to facebook_page.url
+      %td= link_to "Show fans", facebook_page_fans_path(facebook_page)
+      %td
+        = link_to_show facebook_page
+        = link_to_edit facebook_page
+        = link_to_destroy facebook_page
 
-%br
-
-= link_to 'New Page', new_facebook_page_path
